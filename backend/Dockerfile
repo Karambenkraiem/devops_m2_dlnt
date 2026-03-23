@@ -7,6 +7,4 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
-
-CMD ["npm", "run", "start:dev"]
+CMD ["sh", "-c", "npx prisma generate && npm run start:dev"]
