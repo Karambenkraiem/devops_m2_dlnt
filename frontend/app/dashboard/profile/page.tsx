@@ -44,6 +44,7 @@ import { useEffect, useState } from "react";
 import { Alert, Avatar, Box, Container, Paper, Stack, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { User } from "../../types/user";
+import Navbar from "@/components/Navbar";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -84,6 +85,12 @@ export default function ProfilePage() {
   }, [router]);
 
   return (
+    <>
+  <Navbar />
+
+ 
+
+    
     <Box sx={{ minHeight: "100vh", backgroundColor: "#f4f6f8", py: 5 }}>
       <Container maxWidth="md">
         <Paper sx={{ p: 4, borderRadius: 3 }}>
@@ -120,5 +127,6 @@ export default function ProfilePage() {
         </Paper>
       </Container>
     </Box>
+    </>
   );
 }

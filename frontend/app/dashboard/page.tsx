@@ -209,6 +209,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { User } from "../types/user";
+import Navbar from "@/components/Navbar";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -247,8 +248,10 @@ export default function DashboardPage() {
   };
 
   return (
+    <>
+  <Navbar />
     <Box sx={{ minHeight: "100vh", backgroundColor: "#f4f6f8" }}>
-      <AppBar position="static">
+      {/* <AppBar position="static">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6">Dashboard DataServTech</Typography>
 
@@ -298,7 +301,7 @@ export default function DashboardPage() {
             </Menu>
           </Box>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
 
       <Container sx={{ py: 5 }}>
         <Paper sx={{ p: 4, borderRadius: 3 }}>
@@ -324,5 +327,6 @@ export default function DashboardPage() {
         </Paper>
       </Container>
     </Box>
+    </>
   );
 }

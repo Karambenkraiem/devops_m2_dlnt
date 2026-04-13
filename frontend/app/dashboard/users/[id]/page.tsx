@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { User } from "../../../types/user";
+import Navbar from "@/components/Navbar";
 
 export default function UserDetailsPage() {
   const router = useRouter();
@@ -157,6 +158,9 @@ export default function UserDetailsPage() {
   };
 
   return (
+    <>
+  <Navbar />
+  
     <Box sx={{ minHeight: "100vh", backgroundColor: "#f4f6f8", py: 5 }}>
       <Container maxWidth="md">
         <Paper sx={{ p: 4, borderRadius: 3 }}>
@@ -236,5 +240,6 @@ export default function UserDetailsPage() {
         </Paper>
       </Container>
     </Box>
+      </>
   );
 }

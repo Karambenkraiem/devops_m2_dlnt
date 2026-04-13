@@ -223,6 +223,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { User } from "../../types/user";
+import Navbar from "@/components/Navbar";
 
 export default function SettingsPage() {
   const router = useRouter();
@@ -343,6 +344,8 @@ export default function SettingsPage() {
   };
 
   return (
+    <>
+  <Navbar />
     <Box sx={{ minHeight: "100vh", backgroundColor: "#f4f6f8", py: 5 }}>
       <Container maxWidth="sm">
         <Paper sx={{ p: 4, borderRadius: 3 }}>
@@ -451,5 +454,6 @@ export default function SettingsPage() {
         </Paper>
       </Container>
     </Box>
+    </>
   );
 }
