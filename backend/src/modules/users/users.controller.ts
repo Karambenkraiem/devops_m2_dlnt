@@ -5,38 +5,59 @@ import {
   Get,
   Param,
   Patch,
-  Post,
+  Query,
+  Req,
+  UseGuards,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles } from '../auth/guards/roles.decorator';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
-
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  @Roles('ADMIN', 'MANAGER')
+  findAll(@Query('search') search?: string) {
+    return this.usersService.findAll(search);
   }
 
   @Get(':id')
+  @Roles('ADMIN', 'MANAGER')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
+  @Get('me/profile')
+  getMyProfile(@Req() req: any) {
+    return this.usersService.findOne(req.user.id);
+  }
+
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  @Roles('ADMIN', 'MANAGER', 'CLIENT', 'TECHNICIEN')
+  async update(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+    @Req() req: any,
+  ) {
+    const user = req.user;
+
+    if (user.role === 'CLIENT' || user.role === 'TECHNICIEN') {
+      if (user.id !== id) {
+        throw new Error('You can only update your own profile');
+      }
+    }
+
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(':id')
+  @Roles('ADMIN')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+    return this.usersService.deleteClient(id);
   }
 }

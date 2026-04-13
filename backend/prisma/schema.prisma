@@ -6,8 +6,36 @@ datasource db {
   provider = "postgresql"
 }
 
+enum UserRole {
+  ADMIN
+  TECHNICIEN
+  MANAGER
+  CLIENT
+}
+
+enum UserType {
+  PERSONNE_PHYSIQUE
+  SOCIETE
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDU
+}
+
 model User {
-  id       String @id @default(uuid())
-  email    String @unique
-  password String
+  id            String     @id @default(uuid())
+  name          String
+  email         String     @unique
+  password      String
+  role          UserRole
+  type          UserType
+  phoneNumber   String
+  address       String?
+  taxNumber     String?
+  status        UserStatus @default(ACTIVE)
+  photoUrl      String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
 }
