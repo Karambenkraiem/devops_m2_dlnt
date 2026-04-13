@@ -14,11 +14,33 @@ import { RolesGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/guards/roles.decorator';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
+import {
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
+
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
+
+
+const storage = diskStorage({
+  destination: './uploads',
+  filename: (_req, file, callback) => {
+    const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1e9)}${extname(file.originalname)}`;
+    callback(null, uniqueName);
+  },
+});
+
 
 @Controller('users')
 @UseGuards(JwtAuthGuard, RolesGuard)
+
+
+
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Get()
   @Roles('ADMIN', 'MANAGER')
@@ -60,4 +82,28 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.deleteClient(id);
   }
+
+
+
+  @Post(':id/upload-photo')
+  @UseInterceptors(FileInterceptor('photo', { storage }))
+  uploadPhoto(
+    @Param('id') id: string,
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: any,
+  ) {
+    const user = req.user;
+
+    if (user.role === 'CLIENT' || user.role === 'TECHNICIEN') {
+      if (user.id !== id) {
+        throw new Error('You can only update your own photo');
+      }
+    }
+
+    const photoUrl = `http://localhost:3001/uploads/${file.filename}`;
+    return this.usersService.update(id, { photoUrl });
+  }
+
 }
+
+
