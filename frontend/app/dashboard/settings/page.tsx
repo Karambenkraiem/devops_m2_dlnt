@@ -289,6 +289,62 @@ export default function SettingsPage() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadMessage, setUploadMessage] = useState("");
+  const handlePhotoUpload = async () => {
+    setErrorMessage("");
+    setUploadMessage("");
+
+    if (!currentUser?.id) {
+      setErrorMessage("User not found.");
+      return;
+    }
+
+    if (!selectedFile) {
+      setErrorMessage("Please select an image first.");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      const formData = new FormData();
+      formData.append("photo", selectedFile);
+
+      const response = await fetch(
+        `http://localhost:3001/users/${currentUser.id}/upload-photo`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrorMessage(
+          Array.isArray(data.message)
+            ? data.message[0]
+            : data.message || "Photo upload failed."
+        );
+        return;
+      }
+
+      const updatedUser = {
+        ...(currentUser as User),
+        photoUrl: data.photoUrl,
+      };
+
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      setCurrentUser(updatedUser);
+      setPhotoUrl(data.photoUrl);
+      setUploadMessage("Photo uploaded successfully.");
+    } catch {
+      setErrorMessage("Server connection error.");
+    }
+  };
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -466,12 +522,58 @@ export default function SettingsPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <TextField
+        {/* <TextField
           label="Photo URL placeholder"
           fullWidth
           value={photoUrl}
           onChange={(e) => setPhotoUrl(e.target.value)}
+        /> */}
+
+
+
+
+        <TextField
+          label="Photo URL"
+          fullWidth
+          value={photoUrl}
+          InputProps={{ readOnly: true }}
         />
+
+        <Button variant="outlined" component="label">
+          Choose profile photo
+          <input
+            hidden
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setSelectedFile(file);
+              }
+            }}
+          />
+        </Button>
+
+        {selectedFile && (
+          <Typography variant="body2">
+            Selected file: {selectedFile.name}
+          </Typography>
+        )}
+
+        <Button variant="contained" onClick={handlePhotoUpload}>
+          Upload photo
+        </Button>
+
+        {uploadMessage && (
+          <Alert severity="success">
+            {uploadMessage}
+          </Alert>
+        )}
+
+
+
+
+
 
         {(isAdmin || isManager) && (
           <FormControl fullWidth>

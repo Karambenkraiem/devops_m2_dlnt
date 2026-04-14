@@ -23,6 +23,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { CreateUserDto } from './dto/create-user.dto';
 
 
 const storage = diskStorage({
@@ -102,6 +103,12 @@ export class UsersController {
 
     const photoUrl = `http://localhost:3001/uploads/${file.filename}`;
     return this.usersService.update(id, { photoUrl });
+  }
+
+  @Post('admin-create')
+  @Roles('ADMIN')
+  createByAdmin(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.create(createUserDto);
   }
 
 }

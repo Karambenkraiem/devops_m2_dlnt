@@ -180,6 +180,11 @@ export default function UsersPage() {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setCurrentUser(user);
+    }
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -226,6 +231,21 @@ export default function UsersPage() {
         <Button variant="contained" onClick={() => fetchUsers(search)}>
           Search
         </Button>
+        <Button variant="outlined" onClick={() => router.push("/")}>
+          Home
+        </Button>
+
+        {/* ✅ BOUTON AJOUT UTILISATEUR */}
+        {currentUser?.role === "ADMIN" && (
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => router.push("/dashboard/users/create")}
+          >
+            Add new account
+          </Button>
+        )}
+
         <Button variant="outlined" onClick={() => router.push("/")}>
           Home
         </Button>

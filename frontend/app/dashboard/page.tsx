@@ -98,7 +98,9 @@ export default function DashboardPage() {
       : null;
 
   return (
+    
     <Paper sx={{ p: 4, borderRadius: 3 }}>
+      
       <Typography variant="h4" fontWeight="bold" gutterBottom>
         Dashboard
       </Typography>
