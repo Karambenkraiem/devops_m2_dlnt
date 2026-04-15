@@ -101,7 +101,7 @@ export class UsersController {
       }
     }
 
-    const photoUrl = `http://localhost:3001/uploads/${file.filename}`;
+    const photoUrl = `/uploads/${file.filename}`;
     return this.usersService.update(id, { photoUrl });
   }
 

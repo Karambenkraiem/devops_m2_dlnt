@@ -61,7 +61,7 @@
 //       }
 
 //       try {
-//         const response = await fetch("http://localhost:3001/users/me/profile", {
+//         const response = await fetch("/api/users/me/profile", {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -153,7 +153,7 @@ export default function ProfilePage() {
       }
 
       try {
-        const response = await fetch("http://localhost:3001/users/me/profile", {
+        const response = await fetch("/api/users/me/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

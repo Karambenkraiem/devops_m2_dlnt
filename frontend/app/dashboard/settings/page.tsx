@@ -108,7 +108,7 @@
 //         body.status = status;
 //       }
 
-//       const response = await fetch(`http://localhost:3001/users/${targetUserId}`, {
+//       const response = await fetch(`/api/users/${targetUserId}`, {
 //         method: "PATCH",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -311,7 +311,7 @@ export default function SettingsPage() {
       formData.append("photo", selectedFile);
 
       const response = await fetch(
-        `http://localhost:3001/users/${currentUser.id}/upload-photo`,
+        `/api/users/${currentUser.id}/upload-photo`,
         {
           method: "POST",
           headers: {
@@ -415,7 +415,7 @@ export default function SettingsPage() {
         body.status = status;
       }
 
-      const response = await fetch(`http://localhost:3001/users/${targetUserId}`, {
+      const response = await fetch(`/api/users/${targetUserId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

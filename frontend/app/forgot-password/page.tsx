@@ -32,7 +32,7 @@ export default function ForgotPasswordPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3001/auth/forgot-password", {
+      const response = await fetch("/api/auth/forgot-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

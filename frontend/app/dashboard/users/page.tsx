@@ -27,7 +27,7 @@
 //       const token = localStorage.getItem("token");
 
 //       const response = await fetch(
-//         `http://localhost:3001/users?search=${encodeURIComponent(searchValue)}`,
+//         `/api/users?search=${encodeURIComponent(searchValue)}`,
 //         {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
@@ -157,7 +157,7 @@ export default function UsersPage() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:3001/users?search=${encodeURIComponent(searchValue)}`,
+        `/api/users?search=${encodeURIComponent(searchValue)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

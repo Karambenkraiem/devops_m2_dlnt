@@ -43,7 +43,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       const response = await fetch(`http://localhost:3001/users/${userId}`, {
+//       const response = await fetch(`/api/users/${userId}`, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },
@@ -99,7 +99,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       const response = await fetch(`http://localhost:3001/users/${userId}`, {
+//       const response = await fetch(`/api/users/${userId}`, {
 //         method: "PATCH",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -137,7 +137,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-//       const response = await fetch(`http://localhost:3001/users/${userId}`, {
+//       const response = await fetch(`/api/users/${userId}`, {
 //         method: "DELETE",
 //         headers: {
 //           Authorization: `Bearer ${token}`,
@@ -286,7 +286,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
+      const response = await fetch(`/api/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -342,7 +342,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
+      const response = await fetch(`/api/users/${userId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -380,7 +380,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
+      const response = await fetch(`/api/users/${userId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
