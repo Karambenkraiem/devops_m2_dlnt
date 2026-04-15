@@ -101,7 +101,7 @@ export class UsersController {
       }
     }
 
-    const photoUrl = `http://94.23.107.217:3001/uploads/${file.filename}`;
+    const photoUrl = `http://94.23.107.217/uploads/${file.filename}`;
     return this.usersService.update(id, { photoUrl });
   }
 
