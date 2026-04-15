@@ -1,9 +1,7 @@
-name: CI
+name: CI-CD Deploy to OVH VPS
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
     branches: ["main"]
   workflow_dispatch:
 
@@ -36,8 +34,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 1
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -56,10 +52,6 @@ jobs:
         working-directory: backend
         run: npx prisma generate
 
-      - name: Run Prisma migrations
-        working-directory: backend
-        run: npx prisma migrate deploy
-
       - name: Build backend
         working-directory: backend
         run: npm run build
@@ -71,3 +63,25 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy on VPS over SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          port: ${{ secrets.VPS_PORT }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /var/www/dataservtech
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
+            docker compose exec -T backend npx prisma migrate deploy
+            docker compose exec -T backend npx prisma generate
+            docker compose ps
