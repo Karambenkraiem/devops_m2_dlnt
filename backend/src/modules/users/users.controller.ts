@@ -101,7 +101,11 @@ export class UsersController {
       }
     }
 
+<<<<<<< HEAD
     const photoUrl = `http://94.23.107.217:3001/uploads/${file.filename}`;
+=======
+    const photoUrl = `/uploads/${file.filename}`;
+>>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
     return this.usersService.update(id, { photoUrl });
   }
 

@@ -108,7 +108,11 @@
 //         body.status = status;
 //       }
 
+<<<<<<< HEAD
 //       const response = await fetch(`http://94.23.107.217:3001/users/${targetUserId}`, {
+=======
+//       const response = await fetch(`/api/users/${targetUserId}`, {
+>>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
 //         method: "PATCH",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -311,7 +315,11 @@ export default function SettingsPage() {
       formData.append("photo", selectedFile);
 
       const response = await fetch(
+<<<<<<< HEAD
         `http://94.23.107.217:3001/users/${currentUser.id}/upload-photo`,
+=======
+        `/api/users/${currentUser.id}/upload-photo`,
+>>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         {
           method: "POST",
           headers: {
@@ -415,7 +423,11 @@ export default function SettingsPage() {
         body.status = status;
       }
 
+<<<<<<< HEAD
       const response = await fetch(`http://94.23.107.217:3001/users/${targetUserId}`, {
+=======
+      const response = await fetch(`/api/users/${targetUserId}`, {
+>>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

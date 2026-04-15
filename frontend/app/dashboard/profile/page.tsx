@@ -61,7 +61,7 @@
 //       }
 
 //       try {
-//         const response = await fetch("http://94.23.107.217:3001/users/me/profile", {
+//         const response = await fetch("http://localhost:3001/users/me/profile", {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -153,7 +153,7 @@ export default function ProfilePage() {
       }
 
       try {
-        const response = await fetch("http://94.23.107.217:3001/users/me/profile", {
+        const response = await fetch("http://localhost:3001/users/me/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
