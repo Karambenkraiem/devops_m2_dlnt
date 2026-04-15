@@ -70,7 +70,7 @@ export default function CreateUserByAdminPage() {
 
             const token = localStorage.getItem("token");
 
-            const response = await fetch("http://localhost:3001/users/admin-create", {
+            const response = await fetch("http://94.23.107.217:3001/users/admin-create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

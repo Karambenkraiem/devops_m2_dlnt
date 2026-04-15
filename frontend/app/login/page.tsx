@@ -30,7 +30,7 @@
 //     try {
 //       setLoading(true);
 
-//       const response = await fetch("http://localhost:3001/auth/login", {
+//       const response = await fetch("http://94.23.107.217:3001/auth/login", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -158,7 +158,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:3001/auth/login", {
+      const response = await fetch("http://94.23.107.217:3001/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
