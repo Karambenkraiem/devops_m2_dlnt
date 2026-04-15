@@ -43,11 +43,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-<<<<<<< HEAD
 //       const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
-=======
-//       const response = await fetch(`/api/users/${userId}`, {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //         },
@@ -103,11 +99,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-<<<<<<< HEAD
 //       const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
-=======
-//       const response = await fetch(`/api/users/${userId}`, {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
 //         method: "PATCH",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -145,11 +137,7 @@
 //     try {
 //       const token = localStorage.getItem("token");
 
-<<<<<<< HEAD
 //       const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
-=======
-//       const response = await fetch(`/api/users/${userId}`, {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
 //         method: "DELETE",
 //         headers: {
 //           Authorization: `Bearer ${token}`,
@@ -298,11 +286,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-<<<<<<< HEAD
       const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
-=======
-      const response = await fetch(`/api/users/${userId}`, {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -358,11 +342,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-<<<<<<< HEAD
       const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
-=======
-      const response = await fetch(`/api/users/${userId}`, {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -400,11 +380,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-<<<<<<< HEAD
       const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
-=======
-      const response = await fetch(`/api/users/${userId}`, {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

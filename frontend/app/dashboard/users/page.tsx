@@ -27,11 +27,7 @@
 //       const token = localStorage.getItem("token");
 
 //       const response = await fetch(
-<<<<<<< HEAD
 //         `http://94.23.107.217:3001/users?search=${encodeURIComponent(searchValue)}`,
-=======
-//         `/api/users?search=${encodeURIComponent(searchValue)}`,
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
 //         {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
@@ -161,11 +157,7 @@ export default function UsersPage() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-<<<<<<< HEAD
         `http://94.23.107.217:3001/users?search=${encodeURIComponent(searchValue)}`,
-=======
-        `/api/users?search=${encodeURIComponent(searchValue)}`,
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         {
           headers: {
             Authorization: `Bearer ${token}`,

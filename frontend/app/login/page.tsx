@@ -30,11 +30,7 @@
 //     try {
 //       setLoading(true);
 
-<<<<<<< HEAD
 //       const response = await fetch("http://94.23.107.217:3001/auth/login", {
-=======
-//       const response = await fetch("/api/auth/login", {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -162,11 +158,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
 
-<<<<<<< HEAD
       const response = await fetch("http://94.23.107.217:3001/auth/login", {
-=======
-      const response = await fetch("/api/auth/login", {
->>>>>>> fd097f974477f6eb9cc1ec0cd972e459349c16a5
         method: "POST",
         headers: {
           "Content-Type": "application/json",
