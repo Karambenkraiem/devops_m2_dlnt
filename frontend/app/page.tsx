@@ -111,7 +111,7 @@ export default function HomePage() {
         }}
       >
         <Typography variant="h3" fontWeight="bold" gutterBottom>
-          Bienvenue DataServ-Tech
+          Bienvenue DataServ-Tech By2kSoft
         </Typography>
 
         <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
