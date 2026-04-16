@@ -291,7 +291,7 @@ export default function RegisterPage() {
     try {
       setLoading(true);
 
-      const response = await fetch("94.23.107.217:3001/auth/register", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
