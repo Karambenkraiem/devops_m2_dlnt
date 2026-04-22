@@ -19,7 +19,7 @@
 //   app.useStaticAssets(join(__dirname, '..', 'uploads'), {
 //     prefix: '/uploads/',
 //   });
-  
+
 //   app.enableCors({
 //     origin: ['http://94.23.107.217', 'http://localhost:3000'],
 //     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -52,12 +52,19 @@ async function bootstrap() {
     prefix: '/uploads/',
   });
 
+  // app.enableCors({
+  //   origin: ['http://94.23.107.217:3000', 'http://localhost:3000'],
+  //   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  //   allowedHeaders: ['Content-Type', 'Authorization'],
+  //   credentials: true,
+  // });
+
+  
   app.enableCors({
-    origin: ['http://94.23.107.217', 'http://localhost:3000'],
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: true,
     credentials: true,
   });
+
 
   await app.listen(process.env.PORT ?? 3000);
 }
