@@ -127,18 +127,17 @@
 //   }
 // }
 
+
 import {
   ConflictException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import {
   CreateUserDto,
-  
   UserRole,
   UserType,
 } from './dto/create-user.dto';
@@ -186,11 +185,8 @@ export class UsersService {
           photoUrl: true,
         },
       });
-    } catch (error) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.code === 'P2002'
-      ) {
+    } catch (error: any) {
+      if (error.code === 'P2002') {
         throw new ConflictException('Email already exists');
       }
       throw error;
@@ -294,11 +290,8 @@ export class UsersService {
           photoUrl: true,
         },
       });
-    } catch (error) {
-      if (
-        error instanceof Prisma.PrismaClientKnownRequestError &&
-        error.code === 'P2002'
-      ) {
+    } catch (error: any) {
+      if (error.code === 'P2002') {
         throw new ConflictException('Email already exists');
       }
       throw error;

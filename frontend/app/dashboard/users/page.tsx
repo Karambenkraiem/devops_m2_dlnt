@@ -27,7 +27,7 @@ export default function UsersPage() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://94.23.107.217:3001/users?search=${encodeURIComponent(searchValue)}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users?search=${encodeURIComponent(searchValue)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

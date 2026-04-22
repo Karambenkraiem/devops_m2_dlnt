@@ -42,7 +42,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -98,7 +98,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export default function UserDetailsPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://94.23.107.217:3001/users/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${userId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
