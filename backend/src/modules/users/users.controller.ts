@@ -25,7 +25,6 @@
 // import { extname } from 'path';
 // import { CreateUserDto } from './dto/create-user.dto';
 
-
 // const storage = diskStorage({
 //   destination: './uploads',
 //   filename: (_req, file, callback) => {
@@ -34,11 +33,8 @@
 //   },
 // });
 
-
 // @Controller('users')
 // @UseGuards(JwtAuthGuard, RolesGuard)
-
-
 
 // export class UsersController {
 //   constructor(private readonly usersService: UsersService) { }
@@ -84,8 +80,6 @@
 //     return this.usersService.deleteClient(id);
 //   }
 
-
-
 //   @Post(':id/upload-photo')
 //   @UseInterceptors(FileInterceptor('photo', { storage }))
 //   uploadPhoto(
@@ -112,7 +106,6 @@
 //   }
 
 // }
-
 
 import {
   Body,
@@ -191,6 +184,26 @@ export class UsersController {
     return this.usersService.deleteClient(id);
   }
 
+  // @Post(':id/upload-photo')
+  // @UseInterceptors(FileInterceptor('photo', { storage }))
+  // uploadPhoto(
+  //   @Param('id') id: string,
+  //   @UploadedFile() file: Express.Multer.File,
+  //   @Req() req: any,
+  // ) {
+  //   const user = req.user;
+  //   if (user.role === 'CLIENT' || user.role === 'TECHNICIEN') {
+  //     if (user.id !== id) {
+  //       throw new Error('You can only update your own photo');
+  //     }
+  //   }
+
+  //   // ✅ Use env variable instead of hardcoded IP
+  //   const baseUrl = process.env.APP_URL || 'http://94.23.107.217:3001';
+  //   const photoUrl = `${baseUrl}/uploads/${file.filename}`;
+  //   return this.usersService.update(id, { photoUrl });
+  // }
+
   @Post(':id/upload-photo')
   @UseInterceptors(FileInterceptor('photo', { storage }))
   uploadPhoto(
@@ -205,7 +218,6 @@ export class UsersController {
       }
     }
 
-    // ✅ Use env variable instead of hardcoded IP
     const baseUrl = process.env.APP_URL || 'http://94.23.107.217:3001';
     const photoUrl = `${baseUrl}/uploads/${file.filename}`;
     return this.usersService.update(id, { photoUrl });
