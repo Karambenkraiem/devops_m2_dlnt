@@ -206,7 +206,7 @@ export class UsersController {
     }
 
     // ✅ Use env variable instead of hardcoded IP
-    const baseUrl = process.env.APP_URL || 'http://94.23.107.217';
+    const baseUrl = process.env.APP_URL || 'http://94.23.107.217:3001';
     const photoUrl = `${baseUrl}/uploads/${file.filename}`;
     return this.usersService.update(id, { photoUrl });
   }
