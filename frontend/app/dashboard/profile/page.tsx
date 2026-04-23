@@ -59,8 +59,17 @@ export default function ProfilePage() {
 
       {user && (
         <Stack spacing={2}>
-          <Avatar src={user.photoUrl || undefined} sx={{ width: 72, height: 72 }}>
-            {user.name?.charAt(0).toUpperCase()}
+          <Avatar src={
+            user.photoUrl
+              ? `${process.env.NEXT_PUBLIC_API_URL}${user.photoUrl}`
+              : undefined
+          }
+            sx={{ width: 72, height: 72 }}
+          >
+
+            {user.name?.charAt(0).toUpperCase()
+
+            }
           </Avatar>
 
           <Typography><strong>Name:</strong> {user.name}</Typography>
